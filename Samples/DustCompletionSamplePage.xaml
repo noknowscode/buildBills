@@ -1,0 +1,27 @@
+<Page
+    x:Class="UnoCompletionAnimations.Samples.DustCompletionSamplePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dust="using:UnoCompletionAnimations.Components.Completion.Dust">
+    <ScrollViewer>
+        <StackPanel Padding="20,14,20,36" Spacing="14" MaxWidth="680" HorizontalAlignment="Stretch">
+            <StackPanel Spacing="4" Margin="0,0,0,8">
+                <TextBlock Text="Amount → Dust → Check" FontSize="24" FontWeight="SemiBold" Foreground="{StaticResource InkBrush}" />
+                <TextBlock Text="The amount disintegrates, converges into the row checkmark, then the row quietly collapses." TextWrapping="Wrap" FontSize="12" Foreground="{StaticResource MutedBrush}" />
+            </StackPanel>
+
+            <dust:DustCompletionControl x:Name="Mortgage" Title="Mortgage" Subtitle="Due Nov 6" AmountText="$954.00" AnimationCompleted="Dust_AnimationCompleted" />
+            <dust:DustCompletionControl x:Name="Bell" Title="Bell" Subtitle="Due Nov 4" AmountText="$125.00" AnimationCompleted="Dust_AnimationCompleted" />
+            <dust:DustCompletionControl x:Name="Hydro" Title="Hydro-Québec" Subtitle="Due Nov 13" AmountText="$250.00" AnimationCompleted="Dust_AnimationCompleted" />
+
+            <Grid Margin="0,8,0,0" ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Content="Reset all" Style="{StaticResource PrimaryButtonStyle}" Click="Reset_Click" />
+                <TextBlock x:Name="LastCompleted" Grid.Column="1" VerticalAlignment="Center" Text="Nothing completed yet" FontSize="12" Foreground="{StaticResource MutedBrush}" />
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

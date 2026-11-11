@@ -1,0 +1,34 @@
+<UserControl
+    x:Class="UnoCompletionAnimations.Components.Completion.Cascade.TransitRowPresenter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Name="ControlRoot"
+    IsHitTestVisible="False">
+    <Border
+        x:Name="TransitSurface"
+        Background="#F2F8F1"
+        BorderBrush="#D4E6D5"
+        BorderThickness="1"
+        CornerRadius="18"
+        Padding="16,14"
+        RenderTransformOrigin="0.5,0.5">
+        <Border.RenderTransform>
+            <CompositeTransform x:Name="SurfaceTransform" />
+        </Border.RenderTransform>
+        <Grid ColumnSpacing="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="42" />
+            </Grid.ColumnDefinitions>
+            <StackPanel VerticalAlignment="Center" Spacing="3">
+                <TextBlock Text="{Binding Title, ElementName=ControlRoot}" FontSize="15" FontWeight="SemiBold" Foreground="{StaticResource InkBrush}" />
+                <TextBlock Text="{Binding Subtitle, ElementName=ControlRoot}" FontSize="11" Foreground="#5D9470" />
+            </StackPanel>
+            <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding AmountText, ElementName=ControlRoot}" FontSize="15" FontWeight="SemiBold" Foreground="#517C5C" />
+            <Border Grid.Column="2" Width="38" Height="38" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#478158" CornerRadius="19">
+                <Path Width="22" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 2,9 L 7,14 L 19,2" Stretch="Fill" Stroke="White" StrokeThickness="3" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" />
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

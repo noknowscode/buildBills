@@ -1,0 +1,144 @@
+<UserControl
+    x:Class="UnoCompletionAnimations.Components.Completion.Cascade.CascadingCompletionList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Name="ControlRoot">
+
+    <Grid x:Name="AnimationSurface">
+        <StackPanel Spacing="12">
+            <Grid>
+                <TextBlock Text="Upcoming" FontSize="13" FontWeight="SemiBold" Foreground="{StaticResource InkBrush}" />
+                <TextBlock x:Name="UpcomingCount" HorizontalAlignment="Right" FontSize="11" Foreground="{StaticResource MutedBrush}" />
+            </Grid>
+
+            <ItemsRepeater x:Name="UpcomingRepeater">
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            x:Name="CascadeRow"
+                            MinHeight="72"
+                            Margin="0,0,0,8"
+                            Background="{StaticResource SurfaceBrush}"
+                            BorderBrush="{StaticResource BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="18"
+                            Padding="16,14"
+                            RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <CompositeTransform />
+                            </Border.RenderTransform>
+                            <Grid ColumnSpacing="12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel VerticalAlignment="Center" Spacing="3">
+                                    <TextBlock Text="{Binding Title}" FontSize="15" FontWeight="SemiBold" Foreground="{StaticResource InkBrush}" />
+                                    <TextBlock Text="{Binding Subtitle}" FontSize="11" Foreground="{StaticResource MutedBrush}" />
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding AmountText}" FontSize="15" FontWeight="SemiBold" Foreground="{StaticResource InkBrush}" />
+                                <Button
+                                    x:Name="RowCompletionButton"
+                                    Grid.Column="2"
+                                    Width="42"
+                                    Height="42"
+                                    Padding="0"
+                                    BorderThickness="0"
+                                    Background="Transparent"
+                                    RenderTransformOrigin="0.5,0.5"
+                                    Click="CompleteButton_Click">
+                                    <Button.RenderTransform>
+                                        <CompositeTransform />
+                                    </Button.RenderTransform>
+                                    <Grid Width="42" Height="42">
+                                        <Border
+                                            x:Name="RowCompletionRing"
+                                            Width="38"
+                                            Height="38"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Background="White"
+                                            BorderBrush="#B9CCBD"
+                                            BorderThickness="2"
+                                            CornerRadius="19"
+                                            RenderTransformOrigin="0.5,0.5">
+                                            <Border.RenderTransform>
+                                                <CompositeTransform />
+                                            </Border.RenderTransform>
+                                        </Border>
+                                        <Path
+                                            x:Name="RowCompletionCheck"
+                                            Width="22"
+                                            Height="18"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Data="M 2,9 L 7,14 L 19,2"
+                                            Stretch="Fill"
+                                            Stroke="White"
+                                            StrokeThickness="3"
+                                            StrokeStartLineCap="Round"
+                                            StrokeEndLineCap="Round"
+                                            StrokeLineJoin="Round"
+                                            StrokeDashArray="20,20"
+                                            StrokeDashOffset="20"
+                                            Opacity="0" />
+                                    </Grid>
+                                </Button>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
+
+            <Border
+                x:Name="PaidHeader"
+                Margin="0,8,0,0"
+                Background="#F2F8F1"
+                BorderBrush="#DCEADC"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,11"
+                RenderTransformOrigin="0.5,0.5">
+                <Border.RenderTransform>
+                    <CompositeTransform />
+                </Border.RenderTransform>
+                <Grid>
+                    <TextBlock Text="Paid" FontSize="13" FontWeight="SemiBold" Foreground="#4A7855" />
+                    <TextBlock x:Name="PaidCount" HorizontalAlignment="Right" FontSize="11" Foreground="#6A8B72" />
+                </Grid>
+            </Border>
+
+            <ItemsRepeater x:Name="PaidRepeater">
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            MinHeight="64"
+                            Margin="0,0,0,8"
+                            Background="#F7FAF6"
+                            BorderBrush="#E4ECE2"
+                            BorderThickness="1"
+                            CornerRadius="16"
+                            Padding="16,12">
+                            <Grid ColumnSpacing="12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="32" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel VerticalAlignment="Center" Spacing="2">
+                                    <TextBlock Text="{Binding Title}" FontSize="14" FontWeight="SemiBold" Foreground="#517C5C" />
+                                    <TextBlock Text="Completed" FontSize="10" Foreground="#79A083" />
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding AmountText}" FontSize="14" FontWeight="SemiBold" Foreground="#517C5C" />
+                                <TextBlock Grid.Column="2" Text="✓" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="SemiBold" Foreground="#478158" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
+        </StackPanel>
+
+        <Canvas x:Name="TransitOverlay" IsHitTestVisible="False" />
+    </Grid>
+</UserControl>
