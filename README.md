@@ -1,3 +1,5 @@
+> **Moved to uno-lab.** This project now lives in the `buildBills/` folder of [noknowscode/uno-lab](https://github.com/noknowscode/uno-lab/tree/main/buildBills) (private). This repository is archived and kept for its history.
+
 # Uno Completion Animations
 
 > **Build status in this package:** source implementation and static validation are complete. The ChatGPT execution container does not have the .NET SDK installed, so the included Android build attempt ends with `dotnet: command not found`. See `BUILD-REPORT.md`.
